@@ -1,9 +1,16 @@
----@type ChadrcConfig
+--@type ChadrcConfig
 local M = {}
 
 -- Path to overriding theme and highlights files
-local highlights = require "custom.highlights"
+local _             = require "custom.plugins"
+local _             = require "custom.options"
+local highlights    = require "custom.highlights"
+M.mappings          = require "custom.mappings"
 
+
+
+
+M.plugins = "custom.plugins"
 M.ui = {
   theme = "onedark",
   theme_toggle = { "onedark", "one_light" },
@@ -12,50 +19,87 @@ M.ui = {
   hl_add = highlights.add,
 }
 
-M.plugins = "custom.plugins"
+M.options = {
+  nvchad_branch = "v2.0",
+}
 
--- check core.mappings for table structure
-M.mappings = require "custom.mappings"
+M.ui = {
+  ------------------------------- base46 -------------------------------------
+  -- hl = highlights
+  hl_add = {},
+  hl_override = {},
+  changed_themes = {},
+  theme_toggle = { "onedark", "one_light" },
+  theme = "onedark", -- default theme
+  transparency = false,
+  lsp_semantic_tokens = false, -- needs nvim v0.9, just adds highlight groups for lsp semantic tokens
 
+  -- https://github.com/NvChad/base46/tree/v2.0/lua/base46/extended_integrations
+  extended_integrations = {}, -- these aren't compiled by default, ex: "alpha", "notify"
 
+  -- cmp themeing
+  cmp = {
+    icons = true,
+    lspkind_text = true,
+    style = "default", -- default/flat_light/flat_dark/atom/atom_colored
+    border_color = "grey_fg", -- only applicable for "default" style, use color names from base30 variables
+    selected_item_bg = "colored", -- colored / simple
+  },
 
-vim.opt.relativenumber = true
+  telescope = { style = "borderless" }, -- borderless / bordered
 
-vim.opt.timeoutlen = 500
-vim.opt.updatetime = 200
-vim.opt.scrolloff = 8
-vim.opt.number = true
-vim.opt.numberwidth = 2
-vim.opt.relativenumber = true
-vim.opt.signcolumn = 'yes'
-vim.opt.cursorline = true
-vim.opt.expandtab = true
-vim.opt.smarttab = true
-vim.opt.cindent = true
-vim.opt.autoindent = true
-vim.opt.wrap = true
-vim.opt.textwidth = 300
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = -1 -- If negative, shiftwidth value is used
-vim.opt.list = true
- -- Makes nevim.opt and host OS clipboard play nicely with each other
- vim.opt.clipboard = 'unnamedplus'
- -- Case insensitive searching UNLESS /C vim.opt capital in search
- vim.opt.ignorecase = true
- vim.opt.smartcase = true
- -- Better buffer splitting
- vim.opt.splitright = true
- vim.opt.splitbelow = true
- -- Better fvim.opt (don't fold by default)
-  vim.opt.foldmethod = 'indent'
-  vim.opt.foldlevelstart = 99
-  vim.opt.foldnestmax = 3
-  vim.opt.foldminlines = 1
-  vim.opt.mouse = "a"
-   -- Productivity --
+  ------------------------------- nvchad_ui modules -----------------------------
+  statusline = {
+    theme = "default", -- default/vscode/vscode_colored/minimal
+    -- default/round/block/arrow separators work only for default statusline theme
+    -- round and block will work for minimal theme only
+    separator_style = "default",
+    overriden_modules = nil,
+  },
+
+  -- lazyload it when there are 1+ buffers
+  tabufline = {
+    show_numbers = false,
+    enabled = true,
+    lazyload = true,
+    overriden_modules = nil,
+  },
+
+  -- nvdash (dashboard)
+  nvdash = {
+    load_on_startup = true,
+
+    header = {
+      "           ▄ ▄                   ",
+      "       ▄   ▄▄▄     ▄ ▄▄▄ ▄ ▄     ",
+      "       █ ▄ █▄█ ▄▄▄ █ █▄█ █ █     ",
+      "    ▄▄ █▄█▄▄▄█ █▄█▄█▄▄█▄▄█ █     ",
+      "  ▄ █▄▄█ ▄ ▄▄ ▄█ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄  ",
+      "  █▄▄▄▄ ▄▄▄ █ ▄ ▄▄▄ ▄ ▄▄▄ ▄ ▄ █ ▄",
+      "▄ █ █▄█ █▄█ █ █ █▄█ █ █▄█ ▄▄▄ █ █",
+      "█▄█ ▄ █▄▄█▄▄█ █ ▄▄█ █ ▄ █ █▄█▄█ █",
+      "    █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█ █▄█▄▄▄█    ",
+    },
+
+    buttons = {
+      { "  Find File", "Spc f f", "Telescope find_files" },
+      { "󰈚  Recent Files", "Spc f o", "Telescope oldfiles" },
+      { "󰈭  Find Word", "Spc f w", "Telescope live_grep" },
+      { "  Bookmarks", "Spc m a", "Telescope marks" },
+      { "  Themes", "Spc t h", "Telescope themes" },
+      { "  Mappings", "Spc c h", "NvCheatsheet" },
+    },
+  },
+
+  cheatsheet = { theme = "grid" }, -- simple/grid
+
+  lsp = {
+    -- show function signatures i.e args as you type
+    signature = {
+      disabled = false,
+      silent = true, -- silences 'no signature help available' message from appearing
+    },
+  },
+}
 
 return M
-
-
-

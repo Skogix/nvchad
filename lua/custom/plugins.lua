@@ -27,6 +27,10 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = overrides.mason
   },
+  {
+    "williamboman/mason.nvim",
+    opts = overrides.mason
+  },
 
   {
     "nvim-treesitter/nvim-treesitter",
@@ -44,45 +48,6 @@ local plugins = {
     event = "InsertEnter",
     config = function()
       require("better_escape").setup()
-    end,
-  },
-  {
-    "nvim-neorg/neorg",
-    build = ":Neorg sync-parsers",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    lazy = false,
-    config = function()
-      require("neorg").setup {
-        load = {
-          ["core.defaults"] = {}, -- Loads default behaviour
-          ["core.concealer"] = {}, -- Adds pretty icons to your documents
-          ["core.summary"] = {
-            config = {
-              strategy = "default"
-            }
-          },
-          ["core.presenter"] = {
-            config = {
-              zen_mode = "zen-mode"
-            }
-          },
-          ["core.completion"] = {
-            config = {
-              engine = "nvim-cmp"
-            }
-          }, -- Adds pretty icons to your documents
-          ["core.dirman"] = { -- Manages Neorg workspaces
-            config = {
-              workspaces = {
-                notes = "~/notes",
-              },
-              default_workspace = "notes",
-              open_last_workspace = "true"
-            },
-          },
-          ["core.integrations.telescope"] = {},
-        },
-      }
     end,
   },
   {
@@ -109,7 +74,50 @@ local plugins = {
     {
         'jreybert/vimagit',
         lazy = false,
-    }
+    },
+    {
+        'tpope/vim-fugitive',
+        lazy = false,
+    },
+  -- {
+  --   "nvim-neorg/neorg",
+  --   build = ":Neorg sync-parsers",
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --   lazy = false,
+  --   config = function()
+  --     require("neorg").setup {
+  --       load = {
+  --         ["core.defaults"] = {}, -- Loads default behaviour
+  --         ["core.concealer"] = {}, -- Adds pretty icons to your documents
+  --         ["core.summary"] = {
+  --           config = {
+  --             strategy = "default"
+  --           }
+  --         },
+  --         ["core.presenter"] = {
+  --           config = {
+  --             zen_mode = "zen-mode"
+  --           }
+  --         },
+  --         ["core.completion"] = {
+  --           config = {
+  --             engine = "nvim-cmp"
+  --           }
+  --         }, -- Adds pretty icons to your documents
+  --         ["core.dirman"] = { -- Manages Neorg workspaces
+  --           config = {
+  --             workspaces = {
+  --               notes = "~/notes",
+  --             },
+  --             default_workspace = "notes",
+  --             open_last_workspace = "true"
+  --           },
+  --         },
+  --         ["core.integrations.telescope"] = {},
+  --       },
+  --     }
+  --   end,
+  -- },
 }
 
 return plugins
