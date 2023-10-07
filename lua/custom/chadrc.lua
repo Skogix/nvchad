@@ -3,9 +3,9 @@ local M = {}
 
 -- Path to overriding theme and highlights files
 local _             = require "custom.plugins"
-local _             = require "custom.options"
+M.options           = require "custom.options"
 local highlights    = require "custom.highlights"
-M.mappings          = require "custom.mappings"
+M.keybinds          = require "custom.mappings"
 
 
 
