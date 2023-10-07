@@ -1,10 +1,8 @@
 local overrides = require "custom.configs.overrides"
 
----@type NvPluginSpec[]
 local plugins = {
 
   -- Override plugin definition options
-
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -23,6 +21,18 @@ local plugins = {
   },
 
   -- override plugin configs
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+      "nvim-telescope/telescope.nvim", -- optional
+      "sindrets/diffview.nvim", -- optional
+      "ibhagwan/fzf-lua", -- optional
+    },
+  },
+  {
+    "tanvirtin/vgit.nvim",
+  },
   {
     "williamboman/mason.nvim",
     opts = overrides.mason,
@@ -43,8 +53,6 @@ local plugins = {
   },
 
   -- Install a plugin
-<<<<<<< HEAD
-=======
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
@@ -55,28 +63,28 @@ local plugins = {
   {
     "folke/zen-mode.nvim",
     lazy = false,
-  },{
-   'vimwiki/vimwiki',
+  },
+  {
+    "vimwiki/vimwiki",
     config = function()
-        vim.g.vimwiki_list = {
-            {
-                path = '/home/xx/Documents/singularityOffice/wiki',
-                syntax = 'markdown',
-                ext = '.md',
-            }
-        }
+      vim.g.vimwiki_list = {
+        {
+          path = "/home/xx/Documents/singularityOffice/wiki",
+          syntax = "markdown",
+          ext = ".md",
+        },
+      }
     end,
     lazy = false,
   },
-    {
-        'jreybert/vimagit',
-        lazy = false,
-    },
-    {
-        'tpope/vim-fugitive',
-        lazy = false,
-    },
->>>>>>> refs/remotes/origin/master
+  {
+    "jreybert/vimagit",
+    lazy = false,
+  },
+  {
+    "tpope/vim-fugitive",
+    lazy = false,
+  },
   -- {
   --   "nvim-neorg/neorg",
   --   build = ":Neorg sync-parsers",
@@ -174,8 +182,12 @@ local plugins = {
   --   },
   -- },
 }
+
+
 -- https://github.com/mg979/vim-visual-multi       multiselect cursors
 -- 'ThePrimeagen/harpoon'
+-- require("neogit").setup()
+-- require("vgit").setup()
 return plugins
 
 -- 	"nvim-telescope/telescope-file-browser.nvim",
@@ -292,3 +304,6 @@ return plugins
 -- local opts = {}
 --
 -- require("lazy").setup(plugins, opts)
+--
+--
+--

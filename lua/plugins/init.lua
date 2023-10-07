@@ -271,3 +271,6 @@ if #config.plugins > 0 then
 end
 
 require("lazy").setup(default_plugins, config.lazy_nvim)
+require('gitsigns').setup()
+require("neogit").setup()
+require("vgit").setup()
