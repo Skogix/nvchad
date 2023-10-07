@@ -51,11 +51,6 @@ local plugins = {
     end,
   },
   {
-    "sourcegraph/sg.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", { "nvim-neorg/neorg-telescope" }  },
-    lazy = false,
-  },
-  {
     "folke/zen-mode.nvim",
     lazy = false,
   },{
