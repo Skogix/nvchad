@@ -30,4 +30,3 @@ vim.opt.foldlevelstart = 99
 vim.opt.foldnestmax = 3
 vim.opt.foldminlines = 1
 vim.opt.mouse = "a"
--- Productivity --
