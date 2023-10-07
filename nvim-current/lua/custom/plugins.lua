@@ -43,40 +43,6 @@ local plugins = {
   },
 
   -- Install a plugin
-<<<<<<< HEAD
-=======
-  {
-    "max397574/better-escape.nvim",
-    event = "InsertEnter",
-    config = function()
-      require("better_escape").setup()
-    end,
-  },
-  {
-    "folke/zen-mode.nvim",
-    lazy = false,
-  },{
-   'vimwiki/vimwiki',
-    config = function()
-        vim.g.vimwiki_list = {
-            {
-                path = '/home/xx/Documents/singularityOffice/wiki',
-                syntax = 'markdown',
-                ext = '.md',
-            }
-        }
-    end,
-    lazy = false,
-  },
-    {
-        'jreybert/vimagit',
-        lazy = false,
-    },
-    {
-        'tpope/vim-fugitive',
-        lazy = false,
-    },
->>>>>>> refs/remotes/origin/master
   -- {
   --   "nvim-neorg/neorg",
   --   build = ":Neorg sync-parsers",
@@ -160,19 +126,19 @@ local plugins = {
     "tpope/vim-dadbod",
     lazy = false,
   },
-  -- {
-  --   "kristijanhusak/vim-dadbod-ui",
-  --   dependencies = {
-  --     { "tpope/vim-dadbod", lazy = true },
-  --     { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
-  --   },
-  --   cmd = {
-  --     "DBUI",
-  --     "DBUIToggle",
-  --     "DBUIAddConnection",
-  --     "DBUIFindBuffer",
-  --   },
-  -- },
+  {
+    "kristijanhusak/vim-dadbod-ui",
+    dependencies = {
+      { "tpope/vim-dadbod", lazy = true },
+      { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
+    },
+    cmd = {
+      "DBUI",
+      "DBUIToggle",
+      "DBUIAddConnection",
+      "DBUIFindBuffer",
+    },
+  },
 }
 -- https://github.com/mg979/vim-visual-multi       multiselect cursors
 -- 'ThePrimeagen/harpoon'
